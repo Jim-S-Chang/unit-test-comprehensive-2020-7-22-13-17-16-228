@@ -88,4 +88,18 @@ public class GuessNumberTest {
 
         Assertions.assertEquals("2A2B", result);
     }
+
+    @Test
+    public void should_return_1A1B_when_guess_number_given_answer_1234_inputGuess_2536() {
+        int[] answer = {1,2,3,4};
+        int[] inputGuess = {2,5,3,6};
+
+        AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
+        when(answerGenerator.generate()).thenReturn(answer);
+        GuessNumber guessNumber = new GuessNumber(answerGenerator);
+
+        String result = guessNumber.guess(inputGuess);
+
+        Assertions.assertEquals("1A1B", result);
+    }
 }
