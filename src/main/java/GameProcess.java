@@ -15,6 +15,7 @@ public class GameProcess {
     }
 
     public String guess(int[] inputNumber) {
+        this.times++;
         boolean isLegal = inputLegal.isLegal(inputNumber);
         if (!isLegal) {
             String result = "";
@@ -30,5 +31,9 @@ public class GameProcess {
             return result;
         }
         return "";
+    }
+
+    public int getTimes() {
+        return this.times;
     }
 }
