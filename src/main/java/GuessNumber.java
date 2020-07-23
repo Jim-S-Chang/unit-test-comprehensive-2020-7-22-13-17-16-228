@@ -7,7 +7,19 @@ public class GuessNumber {
 
     public String guess(int[] inputGuess) {
         int countOfA = getCountOfA(inputGuess, this.answer);
-        String result = countOfA + "A0B";
+        int countOfB = getCountOfB(inputGuess, this.answer);
+        return countOfA + "A" + countOfB + "B";
+    }
+
+    private int getCountOfB(int[] inputGuess, int[] answer) {
+        int result = 0;
+        for (int i = 0; i < inputGuess.length; i++) {
+            for (int j = 0; j < answer.length; j++) {
+                if (inputGuess[i] == answer[j] && i != j) {
+                    result++;
+                }
+            }
+        }
         return result;
     }
 
