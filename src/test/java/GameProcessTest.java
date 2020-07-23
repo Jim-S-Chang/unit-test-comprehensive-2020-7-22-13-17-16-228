@@ -75,4 +75,22 @@ public class GameProcessTest {
         Assertions.assertEquals(6, gameProcess.getTimes());
         Assertions.assertEquals("end", result7);
     }
+
+    @Test
+    public void should_return_end_when_win_given_1243_first_1234_second_with_answer1234() {
+        int[] answer = {1, 2, 3, 4};
+        AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
+        when(answerGenerator.generate()).thenReturn(answer);
+        GameProcess gameProcess = new GameProcess(answerGenerator);
+
+        int[] inputNumber1 = {1, 2, 4, 3};
+        int[] inputNumber2 = {1, 2, 3, 4};
+
+        gameProcess.guess(inputNumber1);
+        Assertions.assertEquals(1, gameProcess.getTimes());
+        gameProcess.guess(inputNumber2);
+        Assertions.assertEquals(6, gameProcess.getTimes());
+        String result = gameProcess.guess(inputNumber2);
+        Assertions.assertEquals("end", result);
+    }
 }
