@@ -10,6 +10,12 @@ public class GameProcess {
         this.times = 0;
     }
 
+    public GameProcess(AnswerGenerator answerGenerator) {
+        this.inputLegal = new InputLegal();
+        this.guessNumber = new GuessNumber(answerGenerator);
+        this.times = 0;
+    }
+
     public String start() {
         return "Input\tOutput\n";
     }
