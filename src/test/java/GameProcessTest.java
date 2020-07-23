@@ -39,4 +39,18 @@ public class GameProcessTest {
         Assertions.assertEquals(gameProcess.getTimes(), 1);
         Assertions.assertEquals("1 2 4 3\t2A2B\n", result);
     }
+
+    @Test
+    public void should_return_4A0B_and_times_change_to_6_when_guess_given_1234_with_answer1234() {
+        int[] answer = {1,2,3,4};
+        AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
+        when(answerGenerator.generate()).thenReturn(answer);
+        GameProcess gameProcess = new GameProcess(answerGenerator);
+
+        int[] inputNumber = {1, 2,4,3};
+
+        String result = gameProcess.guess(inputNumber);
+        Assertions.assertEquals(gameProcess.getTimes(), 6);
+        Assertions.assertEquals("1 2 4 3\t4A0B\n", result);
+    }
 }
