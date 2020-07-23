@@ -18,4 +18,12 @@ public class RealAnswerGeneratorTest {
 
         Assertions.assertTrue(result);
     }
+
+    @Test
+    public void should_return_true_when_generate_answer_given_no_input_test_is_less_than_4() {
+        RealAnswerGenerator realAnswerGenerator = new RealAnswerGenerator();
+        int[] answer = realAnswerGenerator.generate();
+
+        Assertions.assertTrue(answer.length == 4);
+    }
 }
