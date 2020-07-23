@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class GameProcess {
     private GuessNumber guessNumber;
     private InputLegal inputLegal;
@@ -21,6 +23,9 @@ public class GameProcess {
     }
 
     public String guess(int[] inputNumber) {
+        if (this.times == 6){
+            return "end";
+        }
         this.times++;
         boolean isLegal = inputLegal.isLegal(inputNumber);
         String result = "";
@@ -36,7 +41,11 @@ public class GameProcess {
             result += "Wrong Input, Input again\n";
             return result;
         } else {
-            result += guessNumber.guess(inputNumber) + "\n";
+            String guessResult = guessNumber.guess(inputNumber);
+            result += guessResult + "\n";
+            if (guessResult.equals("4A0B")) {
+                this.times = 6;
+            }
             return result;
         }
     }
