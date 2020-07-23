@@ -8,6 +8,10 @@ public class GameProcess {
     }
 
     public String start() {
-        return "Input\tOutput\t";
+        return "Input\tOutput\n";
+    }
+
+    public String guess(int[] inputNumber) {
+        return "";
     }
 }
