@@ -31,4 +31,14 @@ public class InputLegalTest {
 
         Assertions.assertFalse(isLegal);
     }
+
+    @Test
+    void should_return_true_when_judge_input_legal_given_1234() {
+        int[] inputNumbers = {1, 2, 3, 4};
+        InputLegal inputLegal = new InputLegal();
+
+        boolean isLegal = inputLegal.isLegal(inputNumbers);
+
+        Assertions.assertTrue(isLegal);
+    }
 }
