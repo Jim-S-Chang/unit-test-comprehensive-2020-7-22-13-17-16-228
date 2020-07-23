@@ -4,7 +4,12 @@ public class InputLegal {
 
     public boolean isLegal(int[] inputNumbers) {
         boolean isNoRepeatedNumbers = isRepeated(inputNumbers);
-        return isNoRepeatedNumbers;
+        boolean isLengthLegal = judgeLengthLegal(inputNumbers);
+        return isNoRepeatedNumbers && isLengthLegal;
+    }
+
+    private boolean judgeLengthLegal(int[] inputNumbers) {
+        return inputNumbers.length == 4;
     }
 
     private boolean isRepeated(int[] inputNumbers) {
