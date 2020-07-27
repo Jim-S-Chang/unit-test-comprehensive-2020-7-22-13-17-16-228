@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 public class InputLegal {
@@ -19,8 +20,8 @@ public class InputLegal {
 
     private boolean isNoRepeated(List inputNumbers) {
         HashSet set = new HashSet(inputNumbers);
-        inputNumbers.clear();
-        inputNumbers.addAll(set);
-        return inputNumbers.size() == 4;
+        List<Integer> result = new LinkedList<>();
+        result.addAll(set);
+        return result.size() == 4;
     }
 }

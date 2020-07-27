@@ -1,5 +1,5 @@
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class GameProcess {
     private GuessNumber guessNumber;
@@ -24,31 +24,30 @@ public class GameProcess {
     }
 
     public String guess(List inputNumber) {
-        if (this.times == 6){
+        if (this.times == 6) {
             return "end";
         }
         this.times++;
-        boolean isLegal = inputLegal.isLegal(inputNumber);
-        String result = "";
-        for (int i = 0; i < inputNumber.size(); i++) {
-            result += inputNumber.get(i);
-            if (i == inputNumber.size() - 1) {
-                result += "\t";
-            } else {
-                result += " ";
-            }
-        }
-        if (!isLegal) {
-            result += "Wrong Input, Input again\n";
-            return result;
+        String result = getOutputNumberString(inputNumber);
+        if (!inputLegal.isLegal(inputNumber)) {
+            return String.format("%sWrong Input, Input again\n", result);
         } else {
             String guessResult = guessNumber.guess(inputNumber);
-            result += guessResult + "\n";
-            if (guessResult.equals("4A0B")) {
-                this.times = 6;
-            }
-            return result;
+            judgeWin(guessResult);
+            return String.format("%s%s\n", result, guessResult);
         }
+    }
+
+    private void judgeWin(String guessResult) {
+        if (guessResult.equals("4A0B")) {
+            this.times = 6;
+        }
+    }
+
+    private String getOutputNumberString(List<Integer> inputNumber) {
+        return String.format("%s\t", inputNumber.stream()
+                .map(e -> String.valueOf(e))
+                .collect(Collectors.joining(" ")));
     }
 
     public int getTimes() {
