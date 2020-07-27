@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Objects;
 
 public class GameProcess {
@@ -22,16 +23,16 @@ public class GameProcess {
         return "Input\tOutput\n";
     }
 
-    public String guess(int[] inputNumber) {
+    public String guess(List inputNumber) {
         if (this.times == 6){
             return "end";
         }
         this.times++;
         boolean isLegal = inputLegal.isLegal(inputNumber);
         String result = "";
-        for (int i = 0; i < inputNumber.length; i++) {
-            result += inputNumber[i];
-            if (i == inputNumber.length - 1) {
+        for (int i = 0; i < inputNumber.size(); i++) {
+            result += inputNumber.get(i);
+            if (i == inputNumber.size() - 1) {
                 result += "\t";
             } else {
                 result += " ";

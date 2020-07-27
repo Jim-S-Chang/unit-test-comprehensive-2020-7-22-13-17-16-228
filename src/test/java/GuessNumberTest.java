@@ -2,13 +2,26 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.mockito.Mockito.when;
 
 public class GuessNumberTest {
     @Test
     public void should_return_4A0B_when_guess_number_given_answer_1234_inputGuess_1234() {
-        int[] answer = {1,2,3,4};
-        int[] inputGuess = {1,2,3,4};
+        List<Integer> answer = new LinkedList<>();
+        answer.add(1);
+        answer.add(2);
+        answer.add(3);
+        answer.add(4);
+        List<Integer> inputGuess = new LinkedList<>();
+        inputGuess.add(1);
+        inputGuess.add(2);
+        inputGuess.add(3);
+        inputGuess.add(4);
 
         AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn(answer);
@@ -21,8 +34,16 @@ public class GuessNumberTest {
 
     @Test
     public void should_return_0A0B_when_guess_number_given_answer_1234_inputGuess_5678() {
-        int[] answer = {1,2,3,4};
-        int[] inputGuess = {5,6,7,8};
+        List<Integer> answer = new LinkedList<>();
+        answer.add(1);
+        answer.add(2);
+        answer.add(3);
+        answer.add(4);
+        List<Integer> inputGuess = new LinkedList<>();
+        inputGuess.add(5);
+        inputGuess.add(6);
+        inputGuess.add(7);
+        inputGuess.add(8);
 
         AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn(answer);
@@ -35,8 +56,16 @@ public class GuessNumberTest {
 
     @Test
     public void should_return_2A0B_when_guess_number_given_answer_1234_inputGuess_1278() {
-        int[] answer = {1,2,3,4};
-        int[] inputGuess = {1,2,7,8};
+        List<Integer> answer = new LinkedList<>();
+        answer.add(1);
+        answer.add(2);
+        answer.add(3);
+        answer.add(4);
+        List<Integer> inputGuess = new LinkedList<>();
+        inputGuess.add(1);
+        inputGuess.add(2);
+        inputGuess.add(7);
+        inputGuess.add(8);
 
         AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn(answer);
@@ -49,8 +78,16 @@ public class GuessNumberTest {
 
     @Test
     public void should_return_0A4B_when_guess_number_given_answer_1234_inputGuess_2143() {
-        int[] answer = {1,2,3,4};
-        int[] inputGuess = {2,1,4,3};
+        List<Integer> answer = new LinkedList<>();
+        answer.add(1);
+        answer.add(2);
+        answer.add(3);
+        answer.add(4);
+        List<Integer> inputGuess = new LinkedList<>();
+        inputGuess.add(2);
+        inputGuess.add(1);
+        inputGuess.add(4);
+        inputGuess.add(3);
 
         AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn(answer);
@@ -63,8 +100,16 @@ public class GuessNumberTest {
 
     @Test
     public void should_return_0A2B_when_guess_number_given_answer_1234_inputGuess_2156() {
-        int[] answer = {1,2,3,4};
-        int[] inputGuess = {2,1,5,6};
+        List<Integer> answer = new LinkedList<>();
+        answer.add(1);
+        answer.add(2);
+        answer.add(3);
+        answer.add(4);
+        List<Integer> inputGuess = new LinkedList<>();
+        inputGuess.add(2);
+        inputGuess.add(1);
+        inputGuess.add(5);
+        inputGuess.add(6);
 
         AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn(answer);
@@ -77,8 +122,16 @@ public class GuessNumberTest {
 
     @Test
     public void should_return_2A2B_when_guess_number_given_answer_1234_inputGuess_2134() {
-        int[] answer = {1,2,3,4};
-        int[] inputGuess = {2,1,3,4};
+        List<Integer> answer = new LinkedList<>();
+        answer.add(1);
+        answer.add(2);
+        answer.add(3);
+        answer.add(4);
+        List<Integer> inputGuess = new LinkedList<>();
+        inputGuess.add(2);
+        inputGuess.add(1);
+        inputGuess.add(3);
+        inputGuess.add(4);
 
         AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn(answer);
@@ -91,8 +144,16 @@ public class GuessNumberTest {
 
     @Test
     public void should_return_1A1B_when_guess_number_given_answer_1234_inputGuess_2536() {
-        int[] answer = {1,2,3,4};
-        int[] inputGuess = {2,5,3,6};
+        List<Integer> answer = new LinkedList<>();
+        answer.add(1);
+        answer.add(2);
+        answer.add(3);
+        answer.add(4);
+        List<Integer> inputGuess = new LinkedList<>();
+        inputGuess.add(2);
+        inputGuess.add(5);
+        inputGuess.add(3);
+        inputGuess.add(6);
 
         AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn(answer);

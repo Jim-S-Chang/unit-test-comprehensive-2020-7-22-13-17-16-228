@@ -1,9 +1,11 @@
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class RealAnswerGenerator implements AnswerGenerator {
     @Override
-    public int[] generate() {
-        int[] answer = new int[4];
+    public List generate() {
+        List<Integer> answer = new LinkedList<>();
         int n = 10;
         Random rand = new Random();
         boolean[] bool = new boolean[n];
@@ -13,7 +15,7 @@ public class RealAnswerGenerator implements AnswerGenerator {
                 randInt = rand.nextInt(n);
             } while (bool[randInt]);
             bool[randInt] = true;
-            answer[i] = randInt;
+            answer.add(randInt);
         }
         return answer;
     }

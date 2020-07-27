@@ -1,35 +1,26 @@
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class GuessNumber {
-    private int[] answer;
+    private List answer;
 
     public GuessNumber(AnswerGenerator answerGenerator) {
-        this.answer = answerGenerator.generate();
+        answer = answerGenerator.generate();
     }
 
-    public String guess(int[] inputGuess) {
-        int countOfA = getCountOfA(inputGuess, this.answer);
-        int countOfB = getCountOfB(inputGuess, this.answer);
-        return countOfA + "A" + countOfB + "B";
+    public String guess(List inputGuess) {
+        return String.format("%dA%dB", getCountOfA(inputGuess), getCountOfB(inputGuess));
     }
 
-    private int getCountOfB(int[] inputGuess, int[] answer) {
-        int result = 0;
-        for (int i = 0; i < inputGuess.length; i++) {
-            for (int j = 0; j < answer.length; j++) {
-                if (inputGuess[i] == answer[j] && i != j) {
-                    result++;
-                }
-            }
-        }
-        return result;
+    private int getCountOfB(List inputGuess) {
+        return inputGuess.stream().filter(e->answer.contains(e)).toArray().length- getCountOfA(inputGuess);
     }
 
-    private int getCountOfA(int[] inputGuess, int[] answer) {
-        int result = 0;
-        for (int i = 0; i < inputGuess.length; i++) {
-            if (inputGuess[i] == answer[i]) {
-                result++;
-            }
-        }
-        return result;
+    private int getCountOfA(List inputGuess) {
+        return IntStream
+                .range(0,inputGuess.size())
+                .filter(i->inputGuess.get(i)==answer.get(i))
+                .toArray()
+                .length;
     }
 }

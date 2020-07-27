@@ -1,31 +1,33 @@
+import java.util.List;
+
 public class InputLegal {
     public InputLegal() {
     }
 
-    public boolean isLegal(int[] inputNumbers) {
+    public boolean isLegal(List inputNumbers) {
         boolean isNoRepeatedNumbers = isRepeated(inputNumbers);
         boolean isLengthLegal = judgeLengthLegal(inputNumbers);
         boolean isRangeLegal = judgeRange(inputNumbers);
         return isNoRepeatedNumbers && isLengthLegal && isRangeLegal;
     }
 
-    private boolean judgeRange(int[] inputNumbers) {
-        for (int i = 0; i < inputNumbers.length; i++) {
-            if (inputNumbers[i] < 0 || inputNumbers[i] > 9) {
+    private boolean judgeRange(List<Integer> inputNumbers) {
+        for (int i = 0; i < inputNumbers.size(); i++) {
+            if (inputNumbers.get(i) < 0 || inputNumbers.get(i) > 9) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean judgeLengthLegal(int[] inputNumbers) {
-        return inputNumbers.length == 4;
+    private boolean judgeLengthLegal(List inputNumbers) {
+        return inputNumbers.size() == 4;
     }
 
-    private boolean isRepeated(int[] inputNumbers) {
-        for (int i = 0; i < inputNumbers.length; i++) {
-            for (int j = i + 1; j < inputNumbers.length; j++) {
-                if (inputNumbers[j] == inputNumbers[i]) {
+    private boolean isRepeated(List inputNumbers) {
+        for (int i = 0; i < inputNumbers.size(); i++) {
+            for (int j = i + 1; j < inputNumbers.size(); j++) {
+                if (inputNumbers.get(j) == inputNumbers.get(i)) {
                     return false;
                 }
             }
